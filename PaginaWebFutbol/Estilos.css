@@ -1,0 +1,14 @@
+﻿
+.btnTamañoInicio {
+    width: 150px;
+    height: 125px;
+}
+
+.anchoBotonesRespuestas{
+    width: 49%;
+    height: 90px;
+}
+
+.hide {
+    visibility: hidden;
+}
