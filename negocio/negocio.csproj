@@ -42,11 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
-    <Compile Include="Helper.cs" />
-    <Compile Include="Opcion_A_Negocio.cs" />
-    <Compile Include="Opcion_B_Negocio.cs" />
-    <Compile Include="Opcion_C_Negocio.cs" />
-    <Compile Include="Opcion_D_Negocio.cs" />
     <Compile Include="PreguntaNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

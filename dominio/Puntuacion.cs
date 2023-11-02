@@ -8,7 +8,6 @@ namespace dominio
 {
     public class Puntuacion
     {
-        public string Descripcion { get; set; }
         public int PuntuacionTotal { get; set; }
     }
 }
