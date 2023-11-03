@@ -16,3 +16,9 @@ D:\MIS COSAS\Escritorio\Proyecto-Web-Prueba (terminado)\dominio\obj\Debug\domini
 D:\MIS COSAS\Escritorio\Proyecto-Web-Prueba (terminado)\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
 D:\MIS COSAS\Escritorio\Proyecto-Web-Prueba (terminado)\dominio\obj\Debug\dominio.dll
 D:\MIS COSAS\Escritorio\Proyecto-Web-Prueba (terminado)\dominio\obj\Debug\dominio.pdb
+D:\MIS COSAS\Escritorio\Futbol-Test\dominio\bin\Debug\dominio.dll
+D:\MIS COSAS\Escritorio\Futbol-Test\dominio\bin\Debug\dominio.pdb
+D:\MIS COSAS\Escritorio\Futbol-Test\dominio\obj\Debug\dominio.csproj.AssemblyReference.cache
+D:\MIS COSAS\Escritorio\Futbol-Test\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
+D:\MIS COSAS\Escritorio\Futbol-Test\dominio\obj\Debug\dominio.dll
+D:\MIS COSAS\Escritorio\Futbol-Test\dominio\obj\Debug\dominio.pdb

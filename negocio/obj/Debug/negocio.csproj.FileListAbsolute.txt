@@ -25,3 +25,12 @@ D:\MIS COSAS\Escritorio\Proyecto-Web-Prueba (terminado)\negocio\obj\Debug\negoci
 D:\MIS COSAS\Escritorio\Proyecto-Web-Prueba (terminado)\negocio\obj\Debug\negocio.csproj.CopyComplete
 D:\MIS COSAS\Escritorio\Proyecto-Web-Prueba (terminado)\negocio\obj\Debug\negocio.dll
 D:\MIS COSAS\Escritorio\Proyecto-Web-Prueba (terminado)\negocio\obj\Debug\negocio.pdb
+D:\MIS COSAS\Escritorio\Futbol-Test\negocio\bin\Debug\negocio.dll
+D:\MIS COSAS\Escritorio\Futbol-Test\negocio\bin\Debug\negocio.pdb
+D:\MIS COSAS\Escritorio\Futbol-Test\negocio\bin\Debug\dominio.dll
+D:\MIS COSAS\Escritorio\Futbol-Test\negocio\bin\Debug\dominio.pdb
+D:\MIS COSAS\Escritorio\Futbol-Test\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
+D:\MIS COSAS\Escritorio\Futbol-Test\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
+D:\MIS COSAS\Escritorio\Futbol-Test\negocio\obj\Debug\negocio.csproj.CopyComplete
+D:\MIS COSAS\Escritorio\Futbol-Test\negocio\obj\Debug\negocio.dll
+D:\MIS COSAS\Escritorio\Futbol-Test\negocio\obj\Debug\negocio.pdb
