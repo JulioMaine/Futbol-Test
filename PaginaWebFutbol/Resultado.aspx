@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
             <div class="row">
-                <divdiv class="col-3">
+                <divdiv class="col-2">
                 </divdiv>
                 <div class="col text-center">
                     <div>
@@ -13,9 +13,12 @@
                     <div>
                         <asp:Label ID="lblPuntuacion" CssClass="h2 mt-5 text-white" runat="server" Text="Label"></asp:Label>
                     </div>
-                    <asp:Image ID="imgAprobacion" runat="server" Width="550px" CssClass="object-fit-fill mt-5 mb-5" />
                 </div>
-                <div class="col-3">
+                <div class="col-2">
+
                 </div>
             </div>
+         <div class="row justify-content-center">
+                    <asp:Image ID="imgAprobacion" runat="server" Width="550px"  CssClass="object-fit-fill mt-5 mb-5" />
+         </div>
 </asp:Content>

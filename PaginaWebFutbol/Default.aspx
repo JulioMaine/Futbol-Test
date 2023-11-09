@@ -3,6 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        .btnTamañoInicio {
+    width: 150px;
+    height: 125px;
+}
+    </style>
     <asp:ScriptManager ID="ScripManagerDefault" runat="server">
     </asp:ScriptManager>
     <asp:UpdatePanel runat="server" ID="UpdatePanelDefault">

@@ -15,22 +15,22 @@ namespace PaginaWebFutbol
     {
 
         /// <summary>
-        /// Control ScripManagerEquipos.
+        /// Control ScripManagerSelecciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScripManagerEquipos;
+        protected global::System.Web.UI.ScriptManager ScripManagerSelecciones;
 
         /// <summary>
-        /// Control updatePanelEquipos.
+        /// Control updatePanelSelecciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updatePanelEquipos;
+        protected global::System.Web.UI.UpdatePanel updatePanelSelecciones;
 
         /// <summary>
         /// Control Label1.

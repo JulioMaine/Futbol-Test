@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="PaginaWebFutbol.Master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>¿Cuánto sabes de futbol?</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="Estilos.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+<body class="bg-body-secondary" style="background: url(https://c.wallhere.com/photos/99/83/1920x1080_px_abstract_minimalism_Simple_Simple_Background-775690.jpg!d) no-repeat center center fixed; background-size: cover;">
+    <%--https://c.wallhere.com/photos/99/83/1920x1080_px_abstract_minimalism_Simple_Simple_Background-775690.jpg!d--%>
+        <form id="form1" runat="server">
+            <div>
+                <%--<nav class="navbar bg-body-secondary">
+                <div class="d-flex justify-content-start">
+                    <asp:Button ID="Button2" runat="server" Text="Home" CssClass="btn btn-secondary" style="margin-right: 400px" />
+                    <div class=" justify-content-center">
+                        <asp:Label ID="Label2" class="fs-2 d-flex" runat="server" Text="">¿Quien sabe mas de futbol?</asp:Label>
+                    </div>
+                </div>
+            </nav>--%>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-2">
+                            <asp:Button ID="btnInicio" runat="server" Text="Inicio" CssClass="btn btn-dark ms-2 mt-2" OnClick="btnInicio_Click" />
+                        </div>
+                        <div class="col text-center text-white-50">
+                            <h1>¿Cuánto sabes de futbol?
+                            </h1>
+                        </div>
+                        <div class="col-2">
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </form>
+</body>
+</html>
