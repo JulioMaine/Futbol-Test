@@ -16,12 +16,29 @@ namespace PaginaWebFutbol
 
         protected void btnSelecciones_Click(object sender, EventArgs e)
         {
-            Response.Redirect("PreguntasSelecciones.aspx");
+            try
+            {
+              Response.Redirect("PreguntasSelecciones.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void btnEquipos_Click(object sender, EventArgs e)
         {
-            Response.Redirect("PreguntasEquipos.aspx");
+            try
+            {
+                 Response.Redirect("PreguntasEquipos.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
         }
     }
 }

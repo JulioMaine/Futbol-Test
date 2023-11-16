@@ -16,214 +16,270 @@ namespace PaginaWebFutbol
         public int NroPregunta { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            BtnSiguiente.Visible = false;
 
-            if (!IsPostBack)
+            try
             {
-                Session.Add("NroPreguntaEquipos", 1);
-                Session.Add("PuntuacionEquipos", 0);
-                Session.Add("IncorrectasEquipos", 0);
-                int Pregunta = (int)Session["NroPreguntaEquipos"];
+                BtnSiguiente.Visible = false;
+              
+                if (!IsPostBack)
+                {
+                    Session.Add("NroPreguntaEquipos", 1);
+                    Session.Add("PuntuacionEquipos", 0);
+                    Session.Add("IncorrectasEquipos", 0);
+                    int Pregunta = (int)Session["NroPreguntaEquipos"];
 
-                PreguntaNegocio preguntaNegocio = new PreguntaNegocio();
-                List<Pregunta> listaPreguntas = preguntaNegocio.ListarPreguntasEquipos();
-                Pregunta pregunta = listaPreguntas.Find(x => x.NroPregunta == Pregunta);
+                    PreguntaNegocio preguntaNegocio = new PreguntaNegocio();
+                    List<Pregunta> listaPreguntas = preguntaNegocio.ListarPreguntasEquipos();
+                    Pregunta pregunta = listaPreguntas.Find(x => x.NroPregunta == Pregunta);
 
-                lblPregunta.Text = pregunta.Descripcion;
-                btnOpcionA.Text = pregunta.Opcion_A.Descripcion;
-                btnOpcionB.Text = pregunta.Opcion_B.Descripcion;
-                btnOpcionC.Text = pregunta.Opcion_C.Descripcion;
-                btnOpcionD.Text = pregunta.Opcion_D.Descripcion;
+                    lblPregunta.Text = pregunta.Descripcion;
+                    btnOpcionA.Text = pregunta.Opcion_A.Descripcion;
+                    btnOpcionB.Text = pregunta.Opcion_B.Descripcion;
+                    btnOpcionC.Text = pregunta.Opcion_C.Descripcion;
+                    btnOpcionD.Text = pregunta.Opcion_D.Descripcion;
 
-                NroPregunta = pregunta.NroPregunta;
+                    NroPregunta = pregunta.NroPregunta;
+                }
+
+                NroPregunta = (int)Session["NroPreguntaEquipos"];
+                RespuestasCorrectas = (int)Session["PuntuacionEquipos"];
+                RespuestasIncorrectas = (int)Session["IncorrectasEquipos"];
             }
+            catch (Exception ex)
+            {
 
-            NroPregunta = (int)Session["NroPreguntaEquipos"];
-            RespuestasCorrectas = (int)Session["PuntuacionEquipos"];
-            RespuestasIncorrectas = (int)Session["IncorrectasEquipos"];
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void btnOpcionA_Click(object sender, EventArgs e)
         {
-            int NroPregunta = (int)Session["NroPreguntaEquipos"];
-            int puntuacion = (int)Session["PuntuacionEquipos"];
-            int incorrectas = (int)Session["IncorrectasEquipos"];
-
-            PreguntaNegocio preguntaNegocio = new PreguntaNegocio();
-            List<Pregunta> listaPreguntas = preguntaNegocio.ListarPreguntasEquipos();
-            Pregunta pregunta = listaPreguntas.Find(x => x.NroPregunta == NroPregunta);
-
-            if (pregunta.Opcion_A.Validez)
+            try
             {
-                btnOpcionA.BackColor = System.Drawing.Color.FromArgb(0, 230, 0);
-                puntuacion++;
-                Session.Add("PuntuacionEquipos", puntuacion);
-                btnOpcionB.Enabled = false;
-                btnOpcionA.Enabled = false;
-                btnOpcionC.Enabled = false;
-                btnOpcionD.Enabled = false;
+                int NroPregunta = (int)Session["NroPreguntaEquipos"];
+                int puntuacion = (int)Session["PuntuacionEquipos"];
+                int incorrectas = (int)Session["IncorrectasEquipos"];
+
+                PreguntaNegocio preguntaNegocio = new PreguntaNegocio();
+                List<Pregunta> listaPreguntas = preguntaNegocio.ListarPreguntasEquipos();
+                Pregunta pregunta = listaPreguntas.Find(x => x.NroPregunta == NroPregunta);
+
+                if (pregunta.Opcion_A.Validez)
+                {
+                    btnOpcionA.BackColor = System.Drawing.Color.FromArgb(0, 230, 0);
+                    puntuacion++;
+                    Session.Add("PuntuacionEquipos", puntuacion);
+                    btnOpcionB.Enabled = false;
+                    btnOpcionA.Enabled = false;
+                    btnOpcionC.Enabled = false;
+                    btnOpcionD.Enabled = false;
+                }
+                else
+                {
+                    incorrectas++;
+                    Session.Add("IncorrectasEquipos", incorrectas);
+                    btnOpcionA.BackColor = System.Drawing.Color.FromArgb(190, 0, 0);
+                    btnOpcionB.Enabled = false;
+                    btnOpcionA.Enabled = false;
+                    btnOpcionC.Enabled = false;
+                    btnOpcionD.Enabled = false;
+                }
+                lblRespuesta.Text = pregunta.Respuesta;
+
+                NroPregunta++;
+                Session.Add("NroPreguntaEquipos", NroPregunta);
+
+                BtnSiguiente.Visible = true;
             }
-            else
+            catch (Exception ex)
             {
-                incorrectas++;
-                Session.Add("IncorrectasEquipos", incorrectas);
-                btnOpcionA.BackColor = System.Drawing.Color.FromArgb(190, 0, 0);
-                btnOpcionB.Enabled = false;
-                btnOpcionA.Enabled = false;
-                btnOpcionC.Enabled = false;
-                btnOpcionD.Enabled = false;
+
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
             }
-            lblRespuesta.Text = pregunta.Respuesta;
-
-            NroPregunta++;
-            Session.Add("NroPreguntaEquipos", NroPregunta);
-
-            BtnSiguiente.Visible = true;
         }
 
 
 
         protected void btnOpcionB_Click(object sender, EventArgs e)
         {
-            int NroPregunta = (int)Session["NroPreguntaEquipos"];
-            int puntuacion = (int)Session["PuntuacionEquipos"];
-            int incorrectas = (int)Session["IncorrectasEquipos"];
 
-            PreguntaNegocio preguntaNegocio = new PreguntaNegocio();
-            List<Pregunta> listaPreguntas = preguntaNegocio.ListarPreguntasEquipos();
-            Pregunta pregunta = listaPreguntas.Find(x => x.NroPregunta == NroPregunta);
-
-            if (pregunta.Opcion_B.Validez)
+            try
             {
-                btnOpcionB.BackColor = System.Drawing.Color.FromArgb(0, 230, 0);
-                puntuacion++;
-                Session.Add("PuntuacionEquipos", puntuacion);
-                btnOpcionB.Enabled = false;
-                btnOpcionA.Enabled = false;
-                btnOpcionC.Enabled = false;
-                btnOpcionD.Enabled = false;
-            }
-            else
-            {
-                incorrectas++;
-                Session.Add("IncorrectasEquipos", incorrectas);
-                btnOpcionB.BackColor = System.Drawing.Color.FromArgb(190, 0, 0);
-                btnOpcionB.Enabled = false;
-                btnOpcionA.Enabled = false;
-                btnOpcionC.Enabled = false;
-                btnOpcionD.Enabled = false;
-            }
-            lblRespuesta.Text = pregunta.Respuesta;
-            NroPregunta++;
-            Session.Add("NroPreguntaEquipos", NroPregunta);
+                int NroPregunta = (int)Session["NroPreguntaEquipos"];
+                int puntuacion = (int)Session["PuntuacionEquipos"];
+                int incorrectas = (int)Session["IncorrectasEquipos"];
 
-            BtnSiguiente.Visible = true;
+                PreguntaNegocio preguntaNegocio = new PreguntaNegocio();
+                List<Pregunta> listaPreguntas = preguntaNegocio.ListarPreguntasEquipos();
+                Pregunta pregunta = listaPreguntas.Find(x => x.NroPregunta == NroPregunta);
+
+                if (pregunta.Opcion_B.Validez)
+                {
+                    btnOpcionB.BackColor = System.Drawing.Color.FromArgb(0, 230, 0);
+                    puntuacion++;
+                    Session.Add("PuntuacionEquipos", puntuacion);
+                    btnOpcionB.Enabled = false;
+                    btnOpcionA.Enabled = false;
+                    btnOpcionC.Enabled = false;
+                    btnOpcionD.Enabled = false;
+                }
+                else
+                {
+                    incorrectas++;
+                    Session.Add("IncorrectasEquipos", incorrectas);
+                    btnOpcionB.BackColor = System.Drawing.Color.FromArgb(190, 0, 0);
+                    btnOpcionB.Enabled = false;
+                    btnOpcionA.Enabled = false;
+                    btnOpcionC.Enabled = false;
+                    btnOpcionD.Enabled = false;
+                }
+                lblRespuesta.Text = pregunta.Respuesta;
+                NroPregunta++;
+                Session.Add("NroPreguntaEquipos", NroPregunta);
+
+                BtnSiguiente.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
 
         protected void btnOpcionC_Click(object sender, EventArgs e)
         {
-            int NroPregunta = (int)Session["NroPreguntaEquipos"];
-            int puntuacion = (int)Session["PuntuacionEquipos"];
-            int incorrectas = (int)Session["IncorrectasEquipos"];
-
-            PreguntaNegocio preguntaNegocio = new PreguntaNegocio();
-            List<Pregunta> listaPreguntas = preguntaNegocio.ListarPreguntasEquipos();
-            Pregunta pregunta = listaPreguntas.Find(x => x.NroPregunta == NroPregunta);
-
-            if (pregunta.Opcion_C.Validez)
+            try
             {
-                btnOpcionC.BackColor = System.Drawing.Color.FromArgb(0, 230, 0);
-                puntuacion++;
-                Session.Add("PuntuacionEquipos", puntuacion);
-                btnOpcionB.Enabled = false;
-                btnOpcionA.Enabled = false;
-                btnOpcionC.Enabled = false;
-                btnOpcionD.Enabled = false;
-            }
-            else
-            {
-                incorrectas++;
-                Session.Add("IncorrectasEquipos", incorrectas);
-                btnOpcionC.BackColor = System.Drawing.Color.FromArgb(190, 0, 0);
-                btnOpcionB.Enabled = false;
-                btnOpcionA.Enabled = false;
-                btnOpcionC.Enabled = false;
-                btnOpcionD.Enabled = false;
-            }
-            lblRespuesta.Text = pregunta.Respuesta;
-            NroPregunta++;
-            Session.Add("NroPreguntaEquipos", NroPregunta);
 
-            BtnSiguiente.Visible = true;
+                int NroPregunta = (int)Session["NroPreguntaEquipos"];
+                int puntuacion = (int)Session["PuntuacionEquipos"];
+                int incorrectas = (int)Session["IncorrectasEquipos"];
+
+                PreguntaNegocio preguntaNegocio = new PreguntaNegocio();
+                List<Pregunta> listaPreguntas = preguntaNegocio.ListarPreguntasEquipos();
+                Pregunta pregunta = listaPreguntas.Find(x => x.NroPregunta == NroPregunta);
+
+                if (pregunta.Opcion_C.Validez)
+                {
+                    btnOpcionC.BackColor = System.Drawing.Color.FromArgb(0, 230, 0);
+                    puntuacion++;
+                    Session.Add("PuntuacionEquipos", puntuacion);
+                    btnOpcionB.Enabled = false;
+                    btnOpcionA.Enabled = false;
+                    btnOpcionC.Enabled = false;
+                    btnOpcionD.Enabled = false;
+                }
+                else
+                {
+                    incorrectas++;
+                    Session.Add("IncorrectasEquipos", incorrectas);
+                    btnOpcionC.BackColor = System.Drawing.Color.FromArgb(190, 0, 0);
+                    btnOpcionB.Enabled = false;
+                    btnOpcionA.Enabled = false;
+                    btnOpcionC.Enabled = false;
+                    btnOpcionD.Enabled = false;
+                }
+                lblRespuesta.Text = pregunta.Respuesta;
+                NroPregunta++;
+                Session.Add("NroPreguntaEquipos", NroPregunta);
+
+                BtnSiguiente.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
         }
-
         protected void btnOpcionD_Click(object sender, EventArgs e)
-        {
-            int NroPregunta = (int)Session["NroPreguntaEquipos"];
-            int puntuacion = (int)Session["PuntuacionEquipos"];
-            int incorrectas = (int)Session["IncorrectasEquipos"];
-
-            PreguntaNegocio preguntaNegocio = new PreguntaNegocio();
-            List<Pregunta> listaPreguntas = preguntaNegocio.ListarPreguntasEquipos();
-            Pregunta pregunta = listaPreguntas.Find(x => x.NroPregunta == NroPregunta);
-
-            if (pregunta.Opcion_D.Validez)
+        { 
+            try
             {
-                btnOpcionD.BackColor = System.Drawing.Color.FromArgb(0, 230, 0);
-                puntuacion++;
-                Session.Add("PuntuacionEquipos", puntuacion);
-                btnOpcionB.Enabled = false;
-                btnOpcionA.Enabled = false;
-                btnOpcionC.Enabled = false;
-                btnOpcionD.Enabled = false;
+                int NroPregunta = (int)Session["NroPreguntaEquipos"];
+                int puntuacion = (int)Session["PuntuacionEquipos"];
+                int incorrectas = (int)Session["IncorrectasEquipos"];
+
+                PreguntaNegocio preguntaNegocio = new PreguntaNegocio();
+                List<Pregunta> listaPreguntas = preguntaNegocio.ListarPreguntasEquipos();
+                Pregunta pregunta = listaPreguntas.Find(x => x.NroPregunta == NroPregunta);
+
+                if (pregunta.Opcion_D.Validez)
+                {
+                    btnOpcionD.BackColor = System.Drawing.Color.FromArgb(0, 230, 0);
+                    puntuacion++;
+                    Session.Add("PuntuacionEquipos", puntuacion);
+                    btnOpcionB.Enabled = false;
+                    btnOpcionA.Enabled = false;
+                    btnOpcionC.Enabled = false;
+                    btnOpcionD.Enabled = false;
+                }
+                else
+                {
+                    incorrectas++;
+                    Session.Add("IncorrectasEquipos", incorrectas);
+                    btnOpcionD.BackColor = System.Drawing.Color.FromArgb(190, 0, 0);
+                    btnOpcionB.Enabled = false;
+                    btnOpcionA.Enabled = false;
+                    btnOpcionC.Enabled = false;
+                    btnOpcionD.Enabled = false;
+                }
+                lblRespuesta.Text = pregunta.Respuesta;
+
+                NroPregunta++;
+                Session.Add("NroPreguntaEquipos", NroPregunta);
+
+                BtnSiguiente.Visible = true;
             }
-            else
+            catch (Exception ex)
             {
-                incorrectas++;
-                Session.Add("IncorrectasEquipos", incorrectas);
-                btnOpcionD.BackColor = System.Drawing.Color.FromArgb(190, 0, 0);
-                btnOpcionB.Enabled = false;
-                btnOpcionA.Enabled = false;
-                btnOpcionC.Enabled = false;
-                btnOpcionD.Enabled = false;
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
             }
-            lblRespuesta.Text = pregunta.Respuesta;
-
-            NroPregunta++;
-            Session.Add("NroPreguntaEquipos", NroPregunta);
-
-            BtnSiguiente.Visible = true;
         }
 
 
         protected void BtnSiguiente_Click(object sender, EventArgs e)
         {
-            int NroPregunta = (int)Session["NroPreguntaEquipos"];
-            PreguntaNegocio preguntaNegocio = new PreguntaNegocio();
-            List<Pregunta> listaPreguntas = preguntaNegocio.ListarPreguntasEquipos();
-            Pregunta pregunta = listaPreguntas.Find(x => x.NroPregunta == NroPregunta);
+            try
+            {
 
-            if (pregunta == null)
-                Response.Redirect("Resultado.aspx?Equipos=" + 1);
+                int NroPregunta = (int)Session["NroPreguntaEquipos"];
+                PreguntaNegocio preguntaNegocio = new PreguntaNegocio();
+                List<Pregunta> listaPreguntas = preguntaNegocio.ListarPreguntasEquipos();
+                Pregunta pregunta = listaPreguntas.Find(x => x.NroPregunta == NroPregunta);
 
-            lblRespuesta.Text = "";
-            btnOpcionA.BackColor = System.Drawing.Color.FromArgb(34, 34, 34);
-            btnOpcionB.BackColor = System.Drawing.Color.FromArgb(34, 34, 34);
-            btnOpcionC.BackColor = System.Drawing.Color.FromArgb(34, 34, 34);
-            btnOpcionD.BackColor = System.Drawing.Color.FromArgb(34, 34, 34);
+                if (pregunta == null)
+                    Response.Redirect("Resultado.aspx?Equipos=" + 1, false);
 
-            lblPregunta.Text = pregunta.Descripcion;
-            btnOpcionA.Text = pregunta.Opcion_A.Descripcion;
-            btnOpcionB.Text = pregunta.Opcion_B.Descripcion;
-            btnOpcionC.Text = pregunta.Opcion_C.Descripcion;
-            btnOpcionD.Text = pregunta.Opcion_D.Descripcion;
-            this.NroPregunta = pregunta.NroPregunta;
+                lblRespuesta.Text = "";
+                btnOpcionA.BackColor = System.Drawing.Color.FromArgb(34, 34, 34);
+                btnOpcionB.BackColor = System.Drawing.Color.FromArgb(34, 34, 34);
+                btnOpcionC.BackColor = System.Drawing.Color.FromArgb(34, 34, 34);
+                btnOpcionD.BackColor = System.Drawing.Color.FromArgb(34, 34, 34);
+               
+                if(pregunta != null)
+                {
+                lblPregunta.Text = pregunta.Descripcion;
+                btnOpcionA.Text = pregunta.Opcion_A.Descripcion;
+                btnOpcionB.Text = pregunta.Opcion_B.Descripcion;
+                btnOpcionC.Text = pregunta.Opcion_C.Descripcion;
+                btnOpcionD.Text = pregunta.Opcion_D.Descripcion;
+                this.NroPregunta = pregunta.NroPregunta;
+                }
 
-            btnOpcionA.Enabled = true;
-            btnOpcionB.Enabled = true;
-            btnOpcionC.Enabled = true;
-            btnOpcionD.Enabled = true;
+                btnOpcionA.Enabled = true;
+                btnOpcionB.Enabled = true;
+                btnOpcionC.Enabled = true;
+                btnOpcionD.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
         }
     }
 }

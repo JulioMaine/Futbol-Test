@@ -16,7 +16,16 @@ namespace PaginaWebFutbol
 
         protected void btnInicio_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            try
+            {
+            Response.Redirect("Default.aspx", false);
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
         }
     }
 }

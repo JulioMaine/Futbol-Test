@@ -22,3 +22,9 @@ D:\MIS COSAS\Escritorio\Futbol-Test\dominio\obj\Debug\dominio.csproj.AssemblyRef
 D:\MIS COSAS\Escritorio\Futbol-Test\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
 D:\MIS COSAS\Escritorio\Futbol-Test\dominio\obj\Debug\dominio.dll
 D:\MIS COSAS\Escritorio\Futbol-Test\dominio\obj\Debug\dominio.pdb
+D:\MIS COSAS\Escritorio\APPFUTBOL\Futbol-Test\dominio\bin\Debug\dominio.dll
+D:\MIS COSAS\Escritorio\APPFUTBOL\Futbol-Test\dominio\bin\Debug\dominio.pdb
+D:\MIS COSAS\Escritorio\APPFUTBOL\Futbol-Test\dominio\obj\Debug\dominio.csproj.AssemblyReference.cache
+D:\MIS COSAS\Escritorio\APPFUTBOL\Futbol-Test\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
+D:\MIS COSAS\Escritorio\APPFUTBOL\Futbol-Test\dominio\obj\Debug\dominio.dll
+D:\MIS COSAS\Escritorio\APPFUTBOL\Futbol-Test\dominio\obj\Debug\dominio.pdb
